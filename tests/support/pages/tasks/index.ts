@@ -19,6 +19,18 @@ export class TasksPage {
         await this.page.click('css=button >> text=Create')
     }
 
+    async toggle(taskName: string) {
+        const target = this.page.locator(`//p[text()="${taskName}"]/..//button[contains(@class, "Toggle")]`)
+        await target.click()
+    }
+
+    async delete(taskName: string) {
+        const target = this.page.locator(`//p[text()="${taskName}"]/..//button[contains(@class, "Delete")]`)
+        await target.click()
+    }
+
+
+
     async shouldHaveText(taskName: string) {
         const target = this.page.locator(`css=.task-item p >> text=${taskName}`)
         await expect(target).toBeVisible()
@@ -29,8 +41,13 @@ export class TasksPage {
         await expect(target).toHaveText(text)
     }
 
-    /*async requiredField() {
-        const validationMessage = await tasksPage.inputTaskName.evaluate(e => (e as HTMLInputElement).validationMessage)
-        expect (validationMessage).toEqual('This is a required field')
-    }*/
+    async shouldBeDone(taskName: string) {
+        const target = this.page.getByText(taskName)
+        await expect(target).toHaveCSS('text-decoration-line', 'line-through')
+    }
+
+    async shouldNotExist(taskName: string) {
+        const target = this.page.locator(`css=.task-item p >> text=${taskName}`)
+        await expect(target).not.toBeVisible()
+    }
 }
