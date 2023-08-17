@@ -1,0 +1,16 @@
+{
+  "name": "qax_express-mark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.36.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2"
+  }
+}
