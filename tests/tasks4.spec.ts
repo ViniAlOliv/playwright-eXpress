@@ -29,7 +29,7 @@ test.describe('Cadastro', () => {
 
         await tasksPage.go()
         await tasksPage.create(task)
-        await tasksPage.alertHaveText('Task already existsa!')
+        await tasksPage.alertHaveText('Task already exists!')
 
     })
 
